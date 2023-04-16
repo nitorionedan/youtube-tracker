@@ -8,6 +8,7 @@ export interface Video {
   id: string,
   date: string,
   thumnail_m_url: string,
+  embed_url: string
 }
 
 interface State {
@@ -29,7 +30,6 @@ export const useVideosStore = defineStore({
     },
     async recieveVideoInfo() {
       const url = "https://www.googleapis.com/youtube/v3/search?";
-      // const url = "https://youtube.googleapis.com/youtube/v3/activities?";
 
       const params: {
         part: string,
@@ -39,7 +39,7 @@ export const useVideosStore = defineStore({
         key: string
       } = {
         part: "snippet",
-        channelId: Keys.channelID,
+        channelId: Keys.manaChannelID,
         maxResults: "5",
         order: "date",
         key: Keys.youtubeAPI
@@ -64,12 +64,14 @@ export const useVideosStore = defineStore({
         const name = videoArray[key]["snippet"]["title"] as string;
         const date = videoArray[key]["snippet"]["publishedAt"] as string;
         const thumnail_m_url = videoArray[key]["snippet"]["thumbnails"]["medium"]["url"] as string;
+        const embed_url = `https://www.youtube.com/embed/${id}`;
 
         const video: Video = {
           id: id,
           title: name,
           date: date,
-          thumnail_m_url: thumnail_m_url
+          thumnail_m_url: thumnail_m_url,
+          embed_url: embed_url
         };
         
         this.videoMap.set(video.id, video);
