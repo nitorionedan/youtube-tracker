@@ -11,7 +11,7 @@ const videoMap = computed((): Map<string, Video> => videosStore.videoMap);
 </script>
 
 <template>
-    <h1>キャブヘイトラッカー</h1>
+    <h1>ひばちまなトラッカー</h1>
     <ul>
         <li v-for="[id, video] in videoMap" :key="id">
             <VideoComponent :video="video" />
