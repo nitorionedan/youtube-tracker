@@ -30,7 +30,6 @@ export const useVideosStore = defineStore({
     },
     async recieveVideoInfo() {
       const url = "https://www.googleapis.com/youtube/v3/search?";
-
       const params: {
         part: string,
         channelId: string,

@@ -3,10 +3,15 @@ import HomeView from '../views/HomeView.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/home',
     name: 'home',
-    component: HomeView
-  }
+    component: import("@/views/HomeView.vue")
+  },
+  {
+    path: '/',
+    name: 'search',
+    component: import("@/views/SearchView.vue")
+  },
 ];
 
 const router = createRouter({

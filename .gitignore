@@ -28,4 +28,4 @@ coverage
 *.sw?
 
 # Mine
-/src/key.js
+/src/key.ts
